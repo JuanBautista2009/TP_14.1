@@ -6,15 +6,21 @@ using TMPro;
 public class InteractionArea : MonoBehaviour
 {
     public TextMeshProUGUI puntaje;
+    public TextMeshProUGUI timer;
+    private float tiempoTranscurrido = 0f;
     public int score = 0;
     void Start()
     {
-         puntaje.gameObject.SetActive(false);
+        
     }
     void Update()
     {
-        puntaje.gameObject.SetActive(true);
+       
         puntaje.text = "Score" + ":" + score.ToString();
+        tiempoTranscurrido += Time.deltaTime;
+        int minutos = Mathf.FloorToInt(tiempoTranscurrido / 60);
+        int segundos = Mathf.FloorToInt(tiempoTranscurrido % 60);
+        timer.text = string.Format("{0:00}:{1:00}", minutos, segundos);
     }
     void OnTriggerEnter(Collider col){
         if (col.gameObject.CompareTag("Pickable")){
