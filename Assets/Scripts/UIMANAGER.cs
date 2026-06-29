@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class UIMANAGER : MonoBehaviour
 {
     [Header("Componentes de Texto UI")]
     public TextMeshProUGUI puntaje;
@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI GameOver;
 
     [Header("Configuración del Juego")]
-    private float tiempoRestante = 60f;
+    private float tiempoRestante = 40f;
     private int score = 0;
     private bool juegoTerminado = false;
 

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class InteractionArea : MonoBehaviour
 {
-    private UIManager uiManager;
+    private UIMANAGER uiManager;
 
     void Start()
     {
-        uiManager = FindObjectOfType<UIManager>();
+        uiManager = FindObjectOfType<UIMANAGER>();
     }
 
     void OnTriggerEnter(Collider col)
