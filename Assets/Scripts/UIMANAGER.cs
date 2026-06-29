@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI GameOver;
 
     [Header("Configuración del Juego")]
-    private float tiempoRestante = 120f;
+    private float tiempoRestante = 60f;
     private int score = 0;
     private bool juegoTerminado = false;
 
