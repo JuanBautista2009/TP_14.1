@@ -5,32 +5,29 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Componentes de Texto UI")]
     public TextMeshProUGUI puntaje;
     public TextMeshProUGUI timer;
     public TextMeshProUGUI YouWon;
     public TextMeshProUGUI GameOver;
 
+    [Header("Configuración del Juego")]
     private float tiempoRestante = 120f;
     private int score = 0;
     private bool juegoTerminado = false;
 
-    void Start()
-    {
-        // Seguridad: Solo los desactiva si los arrastraste al Inspector
+    void Start(){
         if (YouWon != null) YouWon.gameObject.SetActive(false);
         if (GameOver != null) GameOver.gameObject.SetActive(false);
     }
 
-    void Update()
-    {
+    void Update(){
         if (juegoTerminado) return;
 
-        if (tiempoRestante > 0)
-        {
+        if (tiempoRestante > 0){
             tiempoRestante -= Time.deltaTime;
         }
-        else
-        {
+        else{
             tiempoRestante = 0;
             juegoTerminado = true;
             if (GameOver != null) GameOver.gameObject.SetActive(true);
@@ -39,19 +36,16 @@ public class UIManager : MonoBehaviour
         int minutos = Mathf.FloorToInt(tiempoRestante / 60);
         int segundos = Mathf.FloorToInt(tiempoRestante % 60);
 
-        // Seguridad: Evita que el juego falle si falta asignar la UI
         if (timer != null) timer.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+
         if (puntaje != null) puntaje.text = "Score: " + score.ToString();
     }
 
-    public void SumarPunto()
-    {
+    public void SumarPunto(){
         if (juegoTerminado) return;
-
         score++;
 
-        if (score >= 7)
-        {
+        if (score >= 7){
             juegoTerminado = true;
             if (YouWon != null) YouWon.gameObject.SetActive(true);
         }
