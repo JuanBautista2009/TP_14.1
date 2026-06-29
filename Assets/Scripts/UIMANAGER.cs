@@ -16,28 +16,32 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        YouWon.gameObject.SetActive(false);
-        GameOver.gameObject.SetActive(false);
+        // Seguridad: Solo los desactiva si los arrastraste al Inspector
+        if (YouWon != null) YouWon.gameObject.SetActive(false);
+        if (GameOver != null) GameOver.gameObject.SetActive(false);
     }
 
     void Update()
     {
         if (juegoTerminado) return;
 
-        if (tiempoRestante > 0){
+        if (tiempoRestante > 0)
+        {
             tiempoRestante -= Time.deltaTime;
         }
-        else{
+        else
+        {
             tiempoRestante = 0;
             juegoTerminado = true;
-            GameOver.gameObject.SetActive(true);
+            if (GameOver != null) GameOver.gameObject.SetActive(true);
         }
 
         int minutos = Mathf.FloorToInt(tiempoRestante / 60);
         int segundos = Mathf.FloorToInt(tiempoRestante % 60);
 
-        timer.text = string.Format("{0:00}:{1:00}", minutos, segundos);
-        puntaje.text = "Score: " + score.ToString();
+        // Seguridad: Evita que el juego falle si falta asignar la UI
+        if (timer != null) timer.text = string.Format("{0:00}:{1:00}", minutos, segundos);
+        if (puntaje != null) puntaje.text = "Score: " + score.ToString();
     }
 
     public void SumarPunto()
@@ -46,9 +50,10 @@ public class UIManager : MonoBehaviour
 
         score++;
 
-        if (score >= 7){
+        if (score >= 7)
+        {
             juegoTerminado = true;
-            YouWon.gameObject.SetActive(true);
+            if (YouWon != null) YouWon.gameObject.SetActive(true);
         }
     }
 }

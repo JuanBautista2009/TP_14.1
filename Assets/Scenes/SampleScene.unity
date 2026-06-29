@@ -9354,6 +9354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbe4c6bb1a61224c866f7d8595265ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puntaje: {fileID: 1468909868}
+  timer: {fileID: 295713735}
+  YouWon: {fileID: 441631179}
+  GameOver: {fileID: 2002739391}
 --- !u!4 &1597046438
 Transform:
   m_ObjectHideFlags: 0
